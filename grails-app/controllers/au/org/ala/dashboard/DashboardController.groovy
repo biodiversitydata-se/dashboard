@@ -80,7 +80,10 @@ class DashboardController {
     }
 
     def statePanel = {
-        render view: 'panels/statePanel', model: []
+        if (grailsApplication.config.getProperty("useStatePanel", Boolean, true))
+            render view: 'panels/statePanel', model: []
+        else
+            render view: 'panels/empty'
     }
 
     def identifyLifePanel = {
@@ -187,7 +190,8 @@ class DashboardController {
     }
 
     def speciesImagesPanel = {
-        if (metadataService.getImagesBreakdown())
+        if (grailsApplication.config.getProperty("useSpeciesImagesPanel", Boolean, true) &&
+                metadataService.getImagesBreakdown())
             render view: 'panels/speciesImagesPanel', model: [imagesBreakdown: metadataService.getImagesBreakdown()]
         else
             render view: 'panels/empty'
