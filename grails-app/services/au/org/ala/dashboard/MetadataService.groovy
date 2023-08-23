@@ -647,26 +647,28 @@ class MetadataService {
     Map getBHLCounts() {
         return cacheService.get('bhlCounts', {
             def stats = [:]
-            try {
-                Document doc = Jsoup.connect(grailsApplication.config.bhl.baseURL).get()
-                def children = doc.select(grailsApplication.config.bhl.statsSelector)[0].childNodes()
+            if (grailsApplication.config.bhl.baseURL) {
+                try {
+                    Document doc = Jsoup.connect(grailsApplication.config.bhl.baseURL).get()
+                    def children = doc.select(grailsApplication.config.bhl.statsSelector)[0].childNodes()
 
-                // Local.US because we need a parser that knows about comma separated numbers nnn,nnn
-                NumberFormat format = NumberFormat.getIntegerInstance(Locale.US);
+                    // Local.US because we need a parser that knows about comma separated numbers nnn,nnn
+                    NumberFormat format = NumberFormat.getIntegerInstance(Locale.US);
 
-                // titles
-                stats.put(children[2].text.trim(), format.parse(children[1].childNode(0).text))
-                // volumes
-                stats.put(children[6].text.trim(), format.parse(children[5].childNode(0).text))
-                // pages
-                stats.put(children[10].text.trim(), format.parse(children[9].childNode(0).text))
+                    // titles
+                    stats.put(children[2].text.trim(), format.parse(children[1].childNode(0).text))
+                    // volumes
+                    stats.put(children[6].text.trim(), format.parse(children[5].childNode(0).text))
+                    // pages
+                    stats.put(children[10].text.trim(), format.parse(children[9].childNode(0).text))
 
-            } catch (e) {
-                // Any exception most likely mean:
-                // 1) service is not available, temporalily condition
-                // 2) Format of the page has changed, permanent condition
-                // In any case there is not much we can do other than let the execution continue without these statistics
-                log.error("Unable to source BHL statistics from remote server", e)
+                } catch (e) {
+                    // Any exception most likely mean:
+                    // 1) service is not available, temporalily condition
+                    // 2) Format of the page has changed, permanent condition
+                    // In any case there is not much we can do other than let the execution continue without these statistics
+                    log.error("Unable to source BHL statistics from remote server", e)
+                }
             }
 
             stats
