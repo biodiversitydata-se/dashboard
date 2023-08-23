@@ -2,7 +2,7 @@ run:
 	./gradlew bootRun
 
 docker-build:
-	./gradlew clean war
+	./gradlew clean build
 	docker build -t dashboard-dev --file sbdi/dev.Dockerfile .
 
 docker-run:
