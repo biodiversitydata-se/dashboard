@@ -647,6 +647,8 @@ class MetadataService {
     Map getBHLCounts() {
         return cacheService.get('bhlCounts', {
             def stats = [:]
+            // SBDI: added check of grailsApplication.config.bhl.baseURL to avoid getting
+            // errors in the logs everytime this method is used.
             if (grailsApplication.config.bhl.baseURL) {
                 try {
                     Document doc = Jsoup.connect(grailsApplication.config.bhl.baseURL).get()
