@@ -5,7 +5,7 @@ RUN mkdir -p \
 	/data/dashboard/csv \
 	/data/dashboard/zip
 
-COPY sbdi-data/data.json /data/dashboard/data.json
-COPY sbdi-data/config/dashboard-config.properties /data/dashboard/config/dashboard-config.properties
+COPY sbdi/data/data.json /data/dashboard/data.json
+COPY sbdi/data/config/dashboard-config.properties /data/dashboard/config/dashboard-config.properties
 
 COPY build/libs/dashboard-2.5.0-plain.war $CATALINA_HOME/webapps/ROOT.war
