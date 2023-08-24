@@ -22,6 +22,5 @@ make run
 
 Build and run in Docker (using Tomcat):
 ```
-make docker-build
-make docker-run
+make run-docker
 ```
