@@ -132,7 +132,8 @@ class DashboardController {
     }
 
     def conservationStatusPanel = {
-        if (metadataService.getSpeciesByConservationStatus())
+        if (grailsApplication.config.getProperty("useConservationStatusPanel", Boolean, true) &&
+                metadataService.getSpeciesByConservationStatus())
             render view: 'panels/conservationStatusPanel', model: [stateConservation: metadataService.getSpeciesByConservationStatus()]
         else
             render view: 'panels/empty'
