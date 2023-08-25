@@ -19,8 +19,8 @@ else
 fi
 
 # Validate the new version format (assuming it follows semantic versioning)
-if ! [[ "$new_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "Invalid version format. Please use semantic versioning (e.g., v1.2.3)."
+if ! [[ "$new_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "Invalid version format. Please use semantic versioning (e.g., 1.2.3)."
     exit 1
 fi
 
