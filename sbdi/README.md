@@ -29,7 +29,7 @@ Make a release. This will create a new tag and push it. A new Docker container w
 ```
 mats@xps-13:~/src/biodiversitydata-se/dashboard (master *)$ make release
 
-Current version: v2.0.1. Enter the new version (or press Enter for v2.0.2): 
-Updating to version v2.0.2
-Tag v2.0.2 created and pushed.
+Current version: 2.0.1. Enter the new version (or press Enter for 2.0.2): 
+Updating to version 2.0.2
+Tag 2.0.2 created and pushed.
 ```
