@@ -1,5 +1,7 @@
 FROM tomcat:9.0-jdk11-temurin
 
+ENV TZ=Europe/Stockholm
+
 RUN mkdir -p \
 	/data/dashboard/config \
 	/data/dashboard/csv \
