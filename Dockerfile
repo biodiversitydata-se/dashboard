@@ -9,4 +9,4 @@ RUN mkdir -p \
 
 COPY sbdi/data/data.json /data/dashboard/data.json
 
-COPY build/libs/dashboard-2.5.0-plain.war $CATALINA_HOME/webapps/ROOT.war
+COPY build/libs/dashboard-*-plain.war $CATALINA_HOME/webapps/ROOT.war
