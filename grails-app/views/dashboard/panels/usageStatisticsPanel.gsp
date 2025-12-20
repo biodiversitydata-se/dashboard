@@ -13,11 +13,6 @@
                             <td>${loggerTotals["1002"]["records"]} records</td>
                         </tr>
                         <tr></tr>
-                        <tr>
-                            <td>Records viewed</td>
-                            <td>${loggerTotals["1000"]["events"]} events</td>
-                            <td>${loggerTotals["1000"]["records"]} records</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
